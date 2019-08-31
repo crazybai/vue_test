@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<script src='vue.js'></script>
+</head>
+<body>
+<div class='container' id='app'>
+<h1>title:{{title}}</h1>
+<h1>functional:{{functional}}</h1>
+<h1>color:{{color}}</h1>
+</div>
+</body>
+</html>
+<script>
+var data={'title':'Panasonic stereo radio','functional':'radio rew','color':'blue'};
+new Vue(
+	{
+		el:'#app',
+		data:data,
+	}
+);
+</script>

@@ -1,55 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset='utf-8'>
 	<title>数组 v-for 列表循环 v-on:submit.prevent 表单处理方法 动态添加列表项</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap.css">
 	<script src='vue.js'></script>
 </head>
 <body>
 <div class='container' id='app'>
-	<div class='row'>
-		<div class='col-md-8'>
-			<div class='panel panel-default'>
-				<div class='panel-heading'>数组 v-for 列表循环 v-on:submit.prevent 表单处理方法 动态添加列表项</div>
-				<div class='panel-body'>
-					<h1>{{message}}</h1> 
-					<ul class='list-group'>
-						<li class='list-group-item' v-for="scene in arrScene">{{scene.title}}</li>
-					</ul>
-
-					<form v-on:submit.prevent='addScene(scene)'>
-						<div class='form-group'>
-							<input type='text' class='form-control' v-model='scene.title'>
-						</div>
-						<div class='form-group'>
-							<input type='submit' value='添加景点' class='btn btn-success'>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+	<h1>{{message}}</h1>
+	<ul>
+		<li v-for='scene1 in arrScene'>
+			{{scene1.title}}
+		</li>
+	</ul>
+	<form v-on:submit.prevent='addScene(scene)'>
+		<input type='text' name='scene' v-model='scene.title'>
+		<input type='submit' value='添加景点'>
+	</form>
 </div>
 </body>
 </html>
-<script type="text/javascript">
-	var app=new Vue({
-		el:'#app',
-		data:{
-			message:'景点名胜',
-			arrScene:[
-				{'title':'南罗鼓巷'},
-				{'title':'烟袋斜街'},
-				{'title':'北海公园'},
-			],
-			scene:{'title':''},
-		},
-		methods:{
-			addScene(scene){
-				this.arrScene.push(scene);
-				this.scene={'title':''};
-			}
-		}
-	});
-</script>
+<script>
+var app=new Vue({
+el:'#app',
+data:{
+	message:'景点名胜',
+	arrScene:[
+		{'title':'南锣鼓巷'},
+		{'title':'烟袋斜街'},
+		{'title':'北海公园'},
+	],
+	scene:{'title':''},
 
+},
+methods:{
+	addScene:function(scene){
+		this.arrScene.push(scene);
+		this.scene={'title':''};
+	}
+}
+});
+</script>
